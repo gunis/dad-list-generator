@@ -1,6 +1,7 @@
 import java.time.format.DateTimeFormatter
 import java.time.LocalDateTime
 import java.util.Random
+import java.util.TimeZone
 
 val AVAILABLE_DUDES = listOf(
     "Dude 1",
@@ -20,7 +21,9 @@ val WORKING_DAYS = listOf(
     "Friday"
 )
 
-private fun getCurrentDateTime() = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
+private fun getCurrentDateTime() = LocalDateTime
+    .now(TimeZone.getTimeZone("CET").toZoneId())
+    .format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
 
 fun main() {
 
